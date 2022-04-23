@@ -5,9 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost:27017/employesDB");
@@ -102,6 +100,31 @@ console.log(clickedEmployId);
   res.redirect("/");
 
 });
+
+app.get("/:gettingPosition", function(req, res) {
+  const gettingPosition = req.params.gettingPosition;
+  Employe.find(function(err, employes) {
+
+      res.render("edit", {
+        employeData: employes,
+        i: gettingPosition,
+      });
+    });
+});
+// app.post("/edit", function(req, res) {
+//   // const editPersonData = new Employe({
+//   //   name: req.body.nameEdit,
+//   //   email: req.body.emailEdit,
+//   //   address: req.body.addressEdit,
+//   //   phone: req.body.phoneEdit,
+//   // });
+//
+// // console.log(editPersonData);
+// // console.log(editPersonData._id);
+//
+// // Employe.updateMany({name:"du"},{$set: {phone:9999999999}});
+//
+// });
 
 
 
