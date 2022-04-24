@@ -4,25 +4,23 @@
 <tr>
   <td>
     <span class="custom-checkbox">
-      <input type="checkbox" id="checkbox1" name="options[]" value="1">
+      <form id="singleBox" class="" action="/delete_multiple" method="post">
+      <input type="checkbox" name="deleteMultiple" value="<%= employeData[i]._id  %>" onchange="this.form.submit();">
       <label for="checkbox1"></label>
+      </form>
     </span>
   </td>
+
   <td> <%= employeData[i].name %> </td>
   <td> <%= employeData[i].email %> </td>
   <td> <%= employeData[i].address %> </td>
   <td> <%= employeData[i].phone %> </td>
-
-
-
-
 
   <form class="" action="/delete" method="post">
     <td>
       <button class="act-btn" type="submit" name="employeId" value="<%= employeData[i]._id %>"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</button>
     </td>
   </form>
-
 
   <td>
     <a type="button" href="/<%=employeData[i]._id%>" name="edit" value=""  > <i class="material-icons"  title="Edit">&#xE254;</i> </a>

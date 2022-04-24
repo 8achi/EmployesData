@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
-
+var listOfID = [];
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,15 +18,12 @@ const employesSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
   },
   address: {
     type: String,
-    required: true
   },
   phone: {
     type: String,
-    required: true
   },
 });
 const Employe = mongoose.model("Employe", employesSchema);
@@ -63,7 +60,6 @@ app.get("/", function(req, res) {
       });
 
     } else {
-      // Employe.updateMany({name:"du"},{$set: {phone:9999999999}});
 
       res.render("home", {
         employeData: employes
@@ -99,6 +95,35 @@ app.post("/delete", function(req, res) {
   });
 console.log(clickedEmployId);
   res.redirect("/");
+
+});
+
+app.post("/delete_multiple", function(req, res) {
+  var check = req.body.ans;
+  var idForMultipleDelete = req.body.deleteMultiple;
+  listOfID.push(idForMultipleDelete);
+
+    if (check === 'true'){
+      for(var j = 0; j < listOfID.length; j++){
+
+      Employe.deleteOne({_id: listOfID[j]}, function(err, docs) {
+        if (err) {
+          console.log("something went wrong"+err);
+        } else
+        {
+          console.log(listOfID);
+          console.log("successfully delete")
+
+        }
+      });
+      console.log("mission succesfully");
+    }
+    res.redirect("/");
+
+
+}
+
+
 
 });
 
