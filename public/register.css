@@ -5,18 +5,19 @@
   text-align: center;
   margin-left: 560px;
 }
-.btn1{
-  margin: 20px 60px auto auto;
+.title-box{
+  margin-top:100px;
+  margin-bottom :10px;
 }
-.btn-box{
-text-align: center;
-margin-left:40px;
+.add{
+  width: 400px;
+  margin-right:400px;
+  margin-top:10px;
+  margin-bottom:10px;
 }
-.text-center{
-  margin-top: 150px;
-}
-.title{
-  background-color: green;
+.cancel{
+  margin-right:16px;
+width: 400px;
 }
 
 
