@@ -9,10 +9,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// connect mongoDB
 
 mongoose.connect("mongodb://localhost:27017/employesDB");
-const employesSchema = new mongoose.Schema({
 
+// collection Schema
+
+const employesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -31,6 +34,8 @@ const employesSchema = new mongoose.Schema({
 
   },
 });
+
+// __________Create Model_______________
 const Employe = mongoose.model("Employe", employesSchema);
 
 app.get("/", function(req, res) {
@@ -42,6 +47,8 @@ app.get("/", function(req, res) {
 
 });
 
+
+// _________Add Employe get abd Post request_________
 
 app.get("/addNewEmploye", function(req, res) {
   res.render("addNewEmploye", );
@@ -56,6 +63,9 @@ app.post("/addNewEmploye", function(req, res) {
   addEmploye.save();
   res.redirect("/");
 });
+
+
+// Single Delete_____________
 
 app.post("/delete", function(req, res) {
   const clickedEmployId = req.body.employeId;
@@ -73,6 +83,9 @@ app.post("/delete", function(req, res) {
 
 });
 
+
+// ____________Delete MultipleEmployees_____________
+
 app.post("/delete_multiple", function(req, res) {
   console.log("hi");
   var idForMultipleDelete  = req.body.dltArr;
@@ -89,10 +102,11 @@ app.post("/delete_multiple", function(req, res) {
         }
       });
     }
-    // res.redirect("/");
     res.status(err.status || 200).json({status: err.status, message: err.message})
 
 });
+
+//__________ geting ID from URL useing ejs routing parameter
 
 app.get("/:gettingID", function(req, res) {
   var gettingID = req.params.gettingID.toString();
@@ -117,6 +131,8 @@ app.get("/:gettingID", function(req, res) {
   });
 
 });
+
+// _______________Edit Part ___________________
 app.post("/edit", function(req, res) {
   const editPersonData = new Employe({
     name: req.body.updateName,
@@ -147,12 +163,15 @@ app.post("/edit", function(req, res) {
 
 });
 
+// _______________Cancel______________
+
 app.post('/cancel', function(req, res) {
   res.redirect("/");
 })
 
 
 
+// _______________LocalHost Port____________________
 app.listen("3000", function() {
   console.log("im on at port 3000");
 });
