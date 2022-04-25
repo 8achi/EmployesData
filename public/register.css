@@ -1,23 +1,25 @@
 
-
 .main-box{
-  width: 400px;
+  width: 25em;
   text-align: center;
-  margin-left: 560px;
+  /* margin-left: 560px; */
 }
 .title-box{
   margin-top:100px;
   margin-bottom :10px;
 }
 .add{
-  width: 400px;
-  margin-right:400px;
-  margin-top:10px;
+  width: 22em;
+
   margin-bottom:10px;
 }
 .cancel{
-  margin-right:16px;
-width: 400px;
+width: 22em;
+}
+p{
+  color:red;
+  font-size:12px;
+
 }
 
 
@@ -52,8 +54,7 @@ width: 400px;
 
 
 
-/* html,
-body {
+/* body {
   height: 100%;
 }
 
@@ -107,4 +108,4 @@ label{
 
 .btn-s{
   margin-top:10px;
-} */
+}  */

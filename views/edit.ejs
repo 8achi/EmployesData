@@ -17,7 +17,7 @@
   </div>
 
   <form class="" action="/edit" method="post">
-    <div class="main-box">
+    <div class="main-box container-sm">
       <div class="form-floating box">
         <input type="text" name="updateName" value="<%=employeData.name%>" class="form-control">
       </div>
@@ -30,15 +30,17 @@
       <div class="form-floating box">
         <input type="tel" name="updatePhone" value="<%=employeData.phone%>" class="form-control">
       </div>
+      <br>
       <input type="hidden" name="_id" value="<%=id%>">
-      <button class="form-control btn btn-success" type="submit" name="edit">Update</button>
+      <button class="add btn btn-success" type="submit" name="edit">Update</button>
 
     </div>
+    <br>
 
   </form>
   <form class="" action="/cancel" method="post">
-    <div class="main-box">
-      <button class="btn cancel btn-outline-dark" type="submit" name="button">Cancel</button>
+    <div class="">
+      <button class=" btn cancel btn-outline-dark" type="submit" name="button">Cancel</button>
     </div>
   </form>
 

@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
-// var listOfID = [];
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
@@ -75,18 +74,12 @@ app.post("/delete", function(req, res) {
 });
 
 app.post("/delete_multiple", function(req, res) {
-  var check = 'true';
+  console.log("hi");
   var idForMultipleDelete  = req.body.dltArr;
-  // listOfID.push(idForMultipleDelete);
   console.log(idForMultipleDelete);
-
-  if (check === 'true') {
     for (var j = 0; j < idForMultipleDelete.length; j++) {
-
-
       Employe.deleteOne({
-        _id: idForMultipleDelete[j]
-      }, function(err, docs) {
+        _id: idForMultipleDelete[j]}, function(err, docs) {
         if (err) {
           console.log("something went wrong" + err);
         } else {
@@ -95,15 +88,9 @@ app.post("/delete_multiple", function(req, res) {
 
         }
       });
-      console.log("mission succesfully");
     }
+    // res.redirect("/");
     res.status(err.status || 200).json({status: err.status, message: err.message})
-
-
-
-  }
-
-
 
 });
 

@@ -12,12 +12,12 @@
 </head>
 
 <body class="text-center">
-
     <div class="title-box">
       <h1>Add <b>Employee</b></h1>
     </div>
+
 <form class="" action="/addNewEmploye" method="post">
-    <div class="main-box">
+    <div class="main-box container-sm">
       <div class="form-floating box">
         <input type="text" name="name1" class="form-control" id="nameId-">
         <label for="nameId">Name</label>
@@ -31,8 +31,9 @@
         <label for="addressId">Address</label>
       </div>
       <div class="form-floating box">
-        <input type="tel" name="phone1" class="form-control" id="phoneId" pattern="[0-9]{10-15}">
+        <input type="text" name="phone1" class="form-control" id="phoneId" maxlength="15">
         <label for="phoneId">Phone Number</label>
+        <p><em >Note: All fields are mandatory.</em></p>
       </div>
         <button class="add btn btn-success" type="submit" name="button">Add</button>
     </div>
@@ -42,8 +43,9 @@
       <button class="cancel btn btn-outline-dark" type="submit" name="button">Cancel</button>
     </div>
   </form>
-
-
+  <br>
+  <br>
+  <br>
 </body>
 
 </html>
